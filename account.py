@@ -17,7 +17,18 @@ def createNewAccount(accountName, sum):
   currentUser.accounts[accountName] = sum
 def checkAccount(accountName):
   return currentUser.accounts[accountName]
-
+def deposit(accountName, sum):
+  currentUser.accounts[accountName] += sum
+def withdraw(accountName, sum):
+  if currentUser.accounts[accountName] < sum:
+    return False
+  currentUser.accounts[accountName] -= sum
+  return True
+def Transfer(accountFrom, accountTo, sum):
+  if currentUser.accounts[accountFrom] < sum:
+    return False
+  currentUser.accounts[accountFrom] -= sum
+  currentUser.accounts[accountTo] += sum
 
 class User:
   def __init__(self, password):
