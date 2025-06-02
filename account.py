@@ -1,4 +1,5 @@
 allUsers = {}
+global currentUser
 currentUser = None
 
 def signUp(userName, password):
@@ -7,10 +8,13 @@ def signUp(userName, password):
   allUsers[userName] = User(password)
   return True
 def signIn(userName, password):
+  global currentUser    
   if allUsers[userName].password == password:
-    currentUser = userName
+    currentUser = allUsers[userName]
+    return True
   return False
 def signOut():
+  global currentUser
   currentUser = None
 
 def createNewAccount(accountName, sum):
@@ -33,7 +37,7 @@ def Transfer(accountFrom, accountTo, sum):
 class User:
   def __init__(self, password):
     self.password = password
-    accounts = {}
+    self.accounts = {}
 
 
 class Account:
